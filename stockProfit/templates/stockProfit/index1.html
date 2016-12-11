@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'stockProfit/css/home.css' %}" />
+        <title>Home Page</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="navbar">
+                <div class="navbar-container">
+                    <a style="float:left;" >Stock Portfolio</a>
+                   
+                </div>
+            </div>
+            <div class="jumbotron">
+  <h1 align="center">Hello, welcome to Stock portfolio suggestion engine !!</h1>
+  <p align="center">A one stop solution to your investement problems</p>
+  
+</div>
+<h3 align="center" style="color:white"> Let's start by choosing either one or two investement strategies</h3>
+<br><br>
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-4">
+        <div class="input-group">
+            <input type="text" placeholder =" Enter amount to be invested" class="form-control" /> 
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go!</button>
+            </span>
+        </div><!-- /input-group -->
+    </div><!-- /.col-lg-4 -->
+</div>
+<a href="#bottom">Click Me!</a>
+<br><br><br>
+
+<div id="bottom">
+
+<div class="row">
+  <div class="col-sm-4">
+    
+    <div class="card card-block">
+      <h3 class="card-title">Ethical Investing</h3>
+      <p class="card-text">Using one's ethical principles as the main filter !.</p>
+      <ul class="list-group list-group-flush">
+    <li class="list-group-item">GOOGLE</li>
+    <li class="list-group-item">APPLE</li>
+    <li class="list-group-item">FACEBOOK</li>
+  </ul>
+</div>
+<div class="checkbox">
+    <label><input type="checkbox" value="ethical">Ethical Investing</label>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card card-block">
+      <h3 class="card-title">Growth Investing</h3>
+      <p class="card-text">invest in companies that exhibit signs of above-average growth, even if the share price appears expensive !.</p>
+      <ul class="list-group list-group-flush">
+    <li class="list-group-item">GOOGLE</li>
+    <li class="list-group-item">APPLE</li>
+    <li class="list-group-item">FACEBOOK</li>
+  </ul>
+    </div>
+    <div class="checkbox">
+    <label><input type="checkbox" value="growth">Growth Investing</label>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card card-block">
+      <h3 class="card-title">Index Investing</h3>
+      <p class="card-text">it is impossible to "beat the market" once trading costs and taxes are taken into account !.</p>
+      <ul class="list-group list-group-flush">
+    <li class="list-group-item">GOOGLE</li>
+    <li class="list-group-item">APPLE</li>
+    <li class="list-group-item">FACEBOOK</li>
+  </ul>
+    </div>
+    <div class="checkbox">
+    <label><input type="checkbox" value="index">Index Investing</label>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4 col-sm-offset-2">
+    <div class="card card-block">
+      <h3 class="card-title">Quality Investing</h3>
+      <p class="card-text">identify companies with outstanding quality characteristics..</p>
+      <ul class="list-group list-group-flush">
+    <li class="list-group-item">GOOGLE</li>
+    <li class="list-group-item">APPLE</li>
+    <li class="list-group-item">FACEBOOK</li>
+  </ul>
+    </div>
+    <div class="checkbox">
+    <label><input type="checkbox" value="quality">Quality Investing</label>
+    </div>
+  </div>
+   <div class="col-sm-4 col-sm-offset-1 ">
+    <div class="card card-block">
+      <h3 class="card-title">Value Investing</h3>
+      <p class="card-text">investment strategy where stocks are selected that trade for less than their intrinsic values !.</p>
+      <ul class="list-group list-group-flush">
+    <li class="list-group-item">GOOGLE</li>
+    <li class="list-group-item">APPLE</li>
+    <li class="list-group-item">FACEBOOK</li>
+  </ul>
+    </div>
+    <div class="checkbox">
+    <label><input type="checkbox" value="value">Value Investing</label>
+    </div>
+  </div>
+</div>
+<br>
+
+
+        </div>
+        </div>
+        <br>
+        
+        
+        
+    </body>
+</html>
