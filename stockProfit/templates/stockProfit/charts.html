@@ -1,60 +1,88 @@
-<!DOCTYPE HTML>
-<html>
-   <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-      <title>Highcharts Example</title>
-
-      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-      <script type="text/javascript">
-      
-      
-      $(document).ready(function() {
-          var options = {
-            chart: {
-              renderTo: 'container',
-              defaultSeriesType: 'spline',
-              marginRight: 130,
-              marginBottom: 25,
-              
-            },
-            series: [{
-              color: $scope.barcolor,
-              data: []  
-            }],
-
-
-            title: {
-              text: 'MongoDB test'
-            },
-     
-             xAxis: {
-                type: 'datetime',
-                categories: []
-            },
-     
-             yAxis: {
-              text: 'value'
-            },
-
-            series: []
-
-          }
-          
-          $.getJSON('connect.php', function (longterm) {
-            options.series.push({
-               name: 'longterm',
-               data: longterm
-         });
-          chart = new Highcharts.Chart(options);
-       });
-       });
-   </script>
-</head>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="https://code.highcharts.com/stock/highstock.js"></script>
+        <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    </head>
 <body>
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<div id="container" style="min-width:310px; height:400px;"></div>
+</body>
 
-<div id="container" style="width: 100%; height: 400px; margin: 0 auto"></div>
+<script>
+$(function () {
 
-   </body>
+    Highcharts.setOptions({
+        global: {
+            useUTC: false
+        }
+    });
+
+    // Create the chart
+    Highcharts.stockChart('container', {
+        chart: {
+            events: {
+                load: function () {
+
+                    // set up the updating of the chart each second
+                    var series = this.series[0];
+                    setInterval(function () {
+                        var x = (new Date()).getTime(), // current time
+                            y = Math.round(Math.random() * 100);
+                        series.addPoint([x, y], true, true);
+                    }, 1000);
+                }
+            }
+        },
+
+        rangeSelector: {
+            buttons: [{
+                count: 1,
+                type: 'minute',
+                text: '1M'
+            }, {
+                count: 5,
+                type: 'minute',
+                text: '5M'
+            }, {
+                type: 'all',
+                text: 'All'
+            }],
+            inputEnabled: false,
+            selected: 0
+        },
+
+        title: {
+            text: 'Live random data'
+        },
+
+        exporting: {
+            enabled: false
+        },
+
+        series: [{
+            name: 'Random data',
+            data: (function () {
+                // generate an array of random data
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+
+                for (i = -999; i <= 0; i += 1) {
+                    data.push([
+                        time + i * 1000,
+                        Math.round(Math.random() * 100)
+                    ]);
+                }
+                return data;
+            }())
+        }]
+    });
+
+});
+
+</script>
+</body>
 </html>
