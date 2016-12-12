@@ -20,9 +20,15 @@ class StockValues(Document):
 	date = DateTimeField()
 	name = StringField(max_length=300)
 	ticker = StringField(max_length=10)
-	price = IntField()
+	price = FloatField()
 	valuechange = IntField()
 
 class MonthlyWeather(models.Model):
 	month = StringField(max_length=10)
 	temp = IntField()
+
+class LiveDataValue(Document):
+	time = DateTimeField()
+	symbol = StringField(max_length=10)
+	price = FloatField()
+	meta = {'strict': False}

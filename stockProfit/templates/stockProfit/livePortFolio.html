@@ -6,29 +6,20 @@
  </head>
  <body>
 
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-<div id="hello">
-    The results of priceList:
-</div>
- <script>
-  //var myarray = {{array1|safe }};
-  var priceList = {{priceList|safe }};
-  //var dateList = {{dateList|safe }};
+<div id="container3" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
-  what();
-    function what(){
-       document.getElementById('hello').innerHTML = priceList;
-   };
+ <script>
+ var currValPF = {{currValPF| safe}};
 
     $(function () {
 
-    Highcharts.chart('container', {
+    Highcharts.chart('container3', {
         title: {
-            text: 'Historical Data',
+            text: 'Live Portfolio Value',
             x: -20 //center
         },
         subtitle: {
-            text: 'Source: CMPE 285',
+            text: 'Source: Taken from Google Api',
             x: -20
         },
         xAxis: {
@@ -39,7 +30,7 @@
                 },
         yAxis: {
             title: {
-                text: 'Temperature (°C)'
+                text: 'Investment Value'
             },
             plotLines: [{
                 value: 0,
@@ -48,7 +39,7 @@
             }]
         },
         tooltip: {
-            valueSuffix: '°C'
+            valuePrefix: '$'
         },
         legend: {
             layout: 'vertical',
@@ -56,15 +47,16 @@
             verticalAlign: 'middle',
             borderWidth: 0
         },
+
         series: [{
-            name: 'Temperature Values',
-            data: priceList
+            name: 'Total Value',
+            data: currValPF
         }]
     });
+
+
 });
  
-    
-
   </script>
 
  </body>

@@ -33,29 +33,17 @@ def storeLiveData (symbol):
             curr_stock_price = float(data[0]['LastTradeWithCurrency'])
 
             client = MongoClient()
-            db = client.testLiveData
-            collection = db.testLiveTable
+            db = client.cmpe285_StockEngine
+            collection = db.live_data_value
 
-            date = now.strftime("%Y-%m-%d %H:%M:%S")
+            #date = now.strftime("%Y-%m-%d %H:%M:%S")
+            date = datetime.datetime.now()
             # Create the document to add
             data = {"symbol": company, "date": date, "price": curr_stock_price}
 
             # Add the document
             objId = collection.insert_one(data).inserted_id
 
-
-            #value_change = curr_stock_price - open_stock_price
-            #perc_change = value_change / open_stock_price
-            #print "Output:"
-            #print "========"
-            #print now.strftime("%Y-%m-%d %H:%M")
-            #var = "Stock Price: %.3f" % curr_stock_price
-            #print var
-            #var = "Value Change: %.3f" % value_change
-            #print var
-            #var = "Percentage Change: %.3f%%" % perc_change
-            #print var
-            #print ""
         except Exception, exc:
             print "Exc: " + str(exc)
             print "Incorrect symbol entered. Quitting"
@@ -71,12 +59,22 @@ def storeLiveData (symbol):
 
 symList  = ["GOOG", "AAPL", "JCI", "ADBE", "NVDA",
             "QCOM", "CI", "TWX", "TMUS", "EXPE",
-            "CTSH", "KORS", "DKS", "NVDA", "TSLA",
+            "CTSH", "KORS", "DKS", "NKE", "TSLA",
             "COST", "AMZN", "NFLX", "XOM", "FB",
             "GIS", "INTC", "CSCO", "WMT", "BA"]
 
-for i in range(len(symList)):
+startTime = time.time() 
+for t in range(10):
+    stop = 0
+    for i in range(len(symList)):
 
-    sym = symList[i] 
-    print "Running the function now for " + sym
-    storeLiveData(sym)
+        sym = symList[i] 
+        print "Running the function now for " + sym
+        storeLiveData(sym)
+        currTime = time.time()
+        if currTime > startTime + 55:
+            stop = 1
+            break
+    if stop == 1:
+        break
+

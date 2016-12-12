@@ -2,14 +2,25 @@
  <head>
  <script src="https://code.highcharts.com/highcharts.js"></script>
  <script src="https://code.highcharts.com/modules/exporting.js"></script>
- <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+ <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
  </head>
  <body>
 
 <div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<br><br><br>
+<b><hr></b>
 <div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div>
+  <form method="post" action="http://127.0.0.1:8000/stocks/livePortFolio">
+    {% csrf_token %}
+        <input type="hidden" name="stockList" id ="slid">
+        <input type="hidden" name="shareBought" id="sbid"><br><br>
+        <center><input type="submit" name="" style="height:500px; width:200px" value="Show Real Time Portfolio Value"></center>
+      </form>
+</div>
 
  <script>
+
   //var myarray = {{array1|safe }};
   var priceList0 = {{priceList0|safe }};
   var priceList1 = {{priceList1|safe }};
@@ -18,6 +29,12 @@
   var priceList4 = {{priceList4|safe }};
   var portFolioList = {{portFolioList|safe }};
   var dateList = {{dateList|safe }};
+  var shareBought= {{shareBought|safe }};
+  var stockList = {{stockList|safe }};
+
+ document.getElementById("slid").value = stockList;
+ document.getElementById("sbid").value = shareBought;
+
 
     var scale = priceList0[4];
     tmp0 = [];
@@ -78,7 +95,6 @@
             }]
         },
         tooltip: {
-            valueSuffix: '°C'
         },
         legend: {
             layout: 'vertical',
@@ -88,7 +104,7 @@
         },
 
         series: [{
-            name: 'CTHS',
+            name: 'CTSH',
             data: tmp0
         }, {
             name: 'KORS',
@@ -128,7 +144,8 @@
             }]
         },
         tooltip: {
-            valueSuffix: '°C'
+            valuePrefix: ' $'
+
         },
         legend: {
             layout: 'vertical',
@@ -141,7 +158,6 @@
             data: portFolioList
         }]
     });
-
 });
  
   </script>
