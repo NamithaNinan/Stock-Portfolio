@@ -1,88 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-        <script src="https://code.highcharts.com/stock/highstock.js"></script>
-        <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
-    <script src="http://code.highcharts.com/highcharts.js"></script>
-    </head>
-<body>
-<div id="container" style="min-width:310px; height:400px;"></div>
-</body>
+<html>
+ <head>
+ <script src="https://code.highcharts.com/highcharts.js"></script>
+ <script src="https://code.highcharts.com/modules/exporting.js"></script>
+ <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+ </head>
+ <body>
 
-<script>
-$(function () {
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="hello">
+    The results of priceList:
+</div>
+ <script>
+  //var myarray = {{array1|safe }};
+  var priceList = {{priceList|safe }};
+  var dateList = {{dateList|safe }};
 
-    Highcharts.setOptions({
-        global: {
-            useUTC: false
-        }
-    });
+  what();
+    function what(){
+       document.getElementById('hello').innerHTML = priceList;
+   };
 
-    // Create the chart
-    Highcharts.stockChart('container', {
-        chart: {
-            events: {
-                load: function () {
+    $(function () {
 
-                    // set up the updating of the chart each second
-                    var series = this.series[0];
-                    setInterval(function () {
-                        var x = (new Date()).getTime(), // current time
-                            y = Math.round(Math.random() * 100);
-                        series.addPoint([x, y], true, true);
-                    }, 1000);
-                }
-            }
-        },
-
-        rangeSelector: {
-            buttons: [{
-                count: 1,
-                type: 'minute',
-                text: '1M'
-            }, {
-                count: 5,
-                type: 'minute',
-                text: '5M'
-            }, {
-                type: 'all',
-                text: 'All'
-            }],
-            inputEnabled: false,
-            selected: 0
-        },
-
+    Highcharts.chart('container', {
         title: {
-            text: 'Live random data'
+            text: 'Historical Data',
+            x: -20 //center
         },
-
-        exporting: {
-            enabled: false
+        subtitle: {
+            text: 'Source: CMPE 285',
+            x: -20
         },
-
+        xAxis: {
+            categories: dateList
+        },
+        yAxis: {
+            title: {
+                text: 'Temperature (°C)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: '°C'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
         series: [{
-            name: 'Random data',
-            data: (function () {
-                // generate an array of random data
-                var data = [],
-                    time = (new Date()).getTime(),
-                    i;
-
-                for (i = -999; i <= 0; i += 1) {
-                    data.push([
-                        time + i * 1000,
-                        Math.round(Math.random() * 100)
-                    ]);
-                }
-                return data;
-            }())
+            name: 'Temperature Values',
+            data: priceList
         }]
     });
-
 });
+ 
+    
 
-</script>
-</body>
-</html>
+  </script>
+
+ </body>
+ </html>
+

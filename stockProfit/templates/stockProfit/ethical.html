@@ -1,0 +1,153 @@
+<html>
+ <head>
+ <script src="https://code.highcharts.com/highcharts.js"></script>
+ <script src="https://code.highcharts.com/modules/exporting.js"></script>
+ <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+ </head>
+ <body>
+
+<div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+ <script>
+  //var myarray = {{array1|safe }};
+  var priceList0 = {{priceList0|safe }};
+  var priceList1 = {{priceList1|safe }};
+  var priceList2 = {{priceList2|safe }};
+  var priceList3 = {{priceList3|safe }};
+  var priceList4 = {{priceList4|safe }};
+  var portFolioList = {{portFolioList|safe }};
+  var dateList = {{dateList|safe }};
+
+    var scale = priceList0[4];
+    tmp0 = [];
+    for(var i = 0; i< priceList0.length; i++){
+        console.log(priceList0[i] + " " + scale)
+        var_x = priceList0[i] / scale
+        tmp0.push(var_x)
+    }
+    var scale = priceList1[4];
+    tmp1 = [];
+    for(var i = 0, length = priceList1.length; i < length; i++){
+        var_x = priceList1[i] / scale
+        tmp1.push(var_x)
+    }
+    var scale = priceList2[4];
+    tmp2 = [];
+    for(var i = 0, length = priceList2.length; i < length; i++){
+        var_x = priceList2[i] / scale
+        tmp2.push(var_x)
+    }
+    var scale = priceList3[4];
+    tmp3 = [];
+    for(var i = 0, length = priceList3.length; i < length; i++){
+        var_x = priceList3[i] / scale
+        tmp3.push(var_x)
+    }
+    var scale = priceList4[4];
+    tmp4 = [];
+    for(var i = 0, length = priceList4.length; i < length; i++){
+        var_x = priceList4[i] / scale
+        tmp4.push(var_x)
+    }
+
+    console.log(tmp0);
+
+    $(function () {
+
+    Highcharts.chart('container1', {
+        title: {
+            text: 'Historical Data',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Source: CMPE 285',
+            x: -20
+        },
+        xAxis: {
+            categories: dateList
+        },
+        yAxis: {
+            title: {
+                text: 'Temperature (°C)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: '°C'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+
+        series: [{
+            name: 'GOOG',
+            data: tmp0
+        }, {
+            name: 'AAPL',
+            data: tmp1
+        }, {
+            name: 'JCI',
+            data: tmp2
+        }, {
+            name: 'ADBE',
+            data: tmp3
+        }, {
+            name: 'NVDA',
+            data: tmp4
+        }]
+    });
+
+        Highcharts.chart('container2', {
+        title: {
+            text: 'Historical Data',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Source: CMPE 285',
+            x: -20
+        },
+        xAxis: {
+            categories: dateList
+        },
+        yAxis: {
+            title: {
+                text: 'Temperature (°C)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: '°C'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: 'Temperature Values',
+            data: portFolioList
+        }]
+    });
+
+});
+ 
+    
+
+  </script>
+
+ </body>
+ </html>
+

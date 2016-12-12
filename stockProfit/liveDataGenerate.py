@@ -63,13 +63,13 @@ def storeLiveData (symbol):
     else :
         print "Not connected to internet."
 
-# ethical GOOG AAPL JCI ADBE PBW
+# ethical GOOG AAPL JCI ADBE NVDA
 # Value QCOM CI TWX TMUS EXPE
 # Growth CTSH KORS DKS NVDA TSLA
 # Index: COST AMZN NFLX OM FB
 # Quality: GIS INTC CSCO WMT BA
 
-symList  = ["GOOG", "AAPL", "JCI", "ADBE", "PBW",
+symList  = ["GOOG", "AAPL", "JCI", "ADBE", "NVDA",
             "QCOM", "CI", "TWX", "TMUS", "EXPE",
             "CTSH", "KORS", "DKS", "NVDA", "TSLA",
             "COST", "AMZN", "NFLX", "XOM", "FB",

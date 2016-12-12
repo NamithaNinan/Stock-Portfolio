@@ -1,14 +1,75 @@
-
-
 <html>
  <head>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
- <script type=”text/javascript” src=”http://code.highcharts.com/highcharts.js”></script>
- <strong>{% load chartit %}</strong>
- <strong>{{ weatherchart|load_charts:”container” }}</strong>
+ <script src="https://code.highcharts.com/highcharts.js"></script>
+ <script src="https://code.highcharts.com/modules/exporting.js"></script>
+ <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
  </head>
  <body>
- <div id=”container”>
- </dv>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="hello">
+    The results of mySymList
+</div>
+ <script>
+  var myarray = {{array1|safe }};
+  //var myname = {{name|safe }};
+
+   what();
+   function what(){
+       document.getElementById('hello').innerHTML = myarray;
+   };
+
+ /* what();
+    function what(){
+       document.getElementById('hello').innerHTML = name;
+       alert(name);
+   };*/
+
+	$(function () {
+
+    Highcharts.chart('container', {
+        title: {
+            text: 'Monthly Average Temperature',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Source: WorldClimate.com',
+            x: -20
+        },
+        xAxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                'Jul', 'Aug']
+        },
+        yAxis: {
+            title: {
+                text: 'Temperature (°C)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: '°C'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: 'Temperature Values',
+            data: myarray
+        }]
+    });
+});
+ 
+  	
+
+  </script>
+
  </body>
  </html>
+
