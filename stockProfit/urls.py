@@ -10,4 +10,8 @@ urlpatterns = [
     url(r'^historyData$', views.historyData), 
    	url(r'^test$', views.queryDB),
    	url(r'^ethical$', views.ethicalStrategy),
+   	url(r'^growth$', views.growthStrategy),
+   	url(r'^indexInvesting$', views.indexStrategy),
+   	url(r'^quality$', views.qualityStrategy),
+   	url(r'^value$', views.valueStrategy),
 ]

@@ -86,28 +86,27 @@
             verticalAlign: 'middle',
             borderWidth: 0
         },
-
         series: [{
-            name: 'GOOG',
+            name: 'COST',
             data: tmp0
         }, {
-            name: 'AAPL',
+            name: 'AMZN',
             data: tmp1
         }, {
-            name: 'JCI',
+            name: 'NFLX',
             data: tmp2
         }, {
-            name: 'ADBE',
+            name: 'XOM',
             data: tmp3
         }, {
-            name: 'NVDA',
+            name: 'FB',
             data: tmp4
         }]
     });
 
         Highcharts.chart('container2', {
         title: {
-            text: 'Ethical Portfolio',
+            text: 'Index Investing Portfolio',
             x: -20 //center
         },
         subtitle: {
@@ -119,7 +118,7 @@
         },
         yAxis: {
             title: {
-                text: 'Ethical Portfolio Value'
+                text: 'Index Investing Portfolio Value'
             },
             plotLines: [{
                 value: 0,
@@ -137,7 +136,7 @@
             borderWidth: 0
         },
         series: [{
-            name: 'Total Ethical Portfolio Values',
+            name: 'Total Index Investing Portfolio Values',
             data: portFolioList
         }]
     });

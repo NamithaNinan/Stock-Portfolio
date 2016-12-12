@@ -88,26 +88,26 @@
         },
 
         series: [{
-            name: 'GOOG',
+            name: 'CTHS',
             data: tmp0
         }, {
-            name: 'AAPL',
+            name: 'KORS',
             data: tmp1
         }, {
-            name: 'JCI',
+            name: 'DKS',
             data: tmp2
         }, {
-            name: 'ADBE',
+            name: 'NKE',
             data: tmp3
         }, {
-            name: 'NVDA',
+            name: 'TSLA',
             data: tmp4
         }]
     });
 
         Highcharts.chart('container2', {
         title: {
-            text: 'Ethical Portfolio',
+            text: 'Growth Portfolio',
             x: -20 //center
         },
         subtitle: {
@@ -119,7 +119,7 @@
         },
         yAxis: {
             title: {
-                text: 'Ethical Portfolio Value'
+                text: 'Growth Portfolio Value'
             },
             plotLines: [{
                 value: 0,
@@ -137,7 +137,7 @@
             borderWidth: 0
         },
         series: [{
-            name: 'Total Ethical Portfolio Values',
+            name: 'Total Growth Portfolio Values',
             data: portFolioList
         }]
     });
