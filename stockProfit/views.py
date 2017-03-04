@@ -11,27 +11,19 @@ import requests
 from requests.auth import HTTPDigestAuth
 import json
 import time
-import quandl
+#import quandl
 from chartit import DataPool, Chart
 from models import MonthlyWeather
 from models import LiveDataValue
 
 
 def index(request):
-    if request.method == 'POST':
-       # save new post
-       title = request.POST['title']
-       content = request.POST['content']
+    
+    return render(request, 'stockProfit/home.html')
 
-       post = Post(title=title)
-       post.last_update = datetime.datetime.now() 
-       post.content = content
-       post.save()
-
-    # Get all posts from DB
-    posts = Post.objects
-    context = {'Posts': posts}
-    return render(request, 'stockProfit/index.html', context)
+def self(request):
+    
+    return render(request, 'stockProfit/chart1.html')
 
 
 def update(request):
@@ -55,7 +47,7 @@ def update(request):
                               
 
 def delete(request):
-    id = eval("request." + request.method + "['id']")
+    id = request.POST.get('id')
     print "Print ID"
     print id;
 
@@ -151,9 +143,9 @@ def queryDB(request):
 
 def ethicalStrategy(request):
     perctDist= [0.30, 0.25, 0.20, 0.15 , 0.10]
-    #amount = request.POST['amount']
-    amount = 5000
-
+    amount1 = request.POST['amount']
+    #amount = 5000
+    amount=float(amount1)
     stockList = ["GOOG", "AAPL", "JCI", "ADBE", "NVDA"]
 
     # priceList_i is 5 day values of a stock[i]
@@ -265,7 +257,9 @@ def ethicalStrategy(request):
 def growthStrategy(request):
     perctDist= [0.20, 0.20, 0.20, 0.20 , 0.20]
     #amount = request.POST['amount']
-    amount = 5000
+    amount1 = request.POST['amount']
+    #amount = 5000
+    amount=float(amount1)
 
     stockList = ["CTSH", "KORS", "DKS", "NKE", "TSLA",]
 
@@ -356,8 +350,9 @@ def growthStrategy(request):
 
 def indexStrategy(request):
     perctDist= [0.30, 0.30, 0.20, 0.10 , 0.10]
-    #amount = request.POST['amount']
-    amount = 5000
+    amount1 = request.POST['amount']
+    #amount = 5000
+    amount=float(amount1)
 
     stockList = [ "COST", "AMZN", "NFLX", "XOM", "FB"]
 
@@ -448,8 +443,9 @@ def indexStrategy(request):
 
 def valueStrategy(request):
     perctDist= [0.20, 0.20, 0.20, 0.20 , 0.20]
-    #amount = request.POST['amount']
-    amount = 500
+    amount1 = request.POST['amount']
+    #amount = 5000
+    amount=float(amount1)
 
     stockList = ["QCOM", "CI", "TWX", "TMUS", "EXPE"]
 
@@ -540,8 +536,9 @@ def valueStrategy(request):
 
 def qualityStrategy(request):
     perctDist= [0.30, 0.30, 0.20, 0.10 , 0.10]
-    #amount = request.POST['amount']
-    amount = 5000
+    amount1 = request.POST['amount']
+    #amount = 5000
+    amount=float(amount1)
 
     stockList = [ "GIS", "INTC", "CSCO", "WMT", "BA"]
 

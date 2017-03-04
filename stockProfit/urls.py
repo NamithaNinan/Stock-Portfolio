@@ -5,6 +5,7 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index),
     url(r'^update/', views.update),
+    url(r'^self/', views.self),
     url(r'^delete/', views.delete),  
     url(r'^charts$', views.displayCurrVal), 
     url(r'^historyData$', views.historyData), 

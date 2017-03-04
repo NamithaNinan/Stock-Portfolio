@@ -321,61 +321,64 @@ function validate(){
 <br><br>
 <section>
 <div id="bottom"><br><br><br>
-<!--<form align="center" onsubmit="validate();">-->
+<form align="center" onsubmit="validate();">
 
-    <legend style="color:black" align="center">&nbsp; <b>Investment strategies</b> &nbsp;</legend><br><br><br>
+    <legend style="color:black">&nbsp; <b>Investment strategies</b> &nbsp;</legend>
 <div class="row">
     <div class="col-md-2 col-md-offset-1">
-        <form align="center" method="post" action="http://127.0.0.1:8000/stocks/ethical">
-    {% csrf_token %}
-  <h3 class="card-title" align="center">Ethical Investement</h3>
-  <p class="card-text" align="center">Using one's ethical principles as the main filter !.</p><br><br><br>
-  <input type="text" placeholder ="Investement Amount" name="amount" class="form-control" width="400px" id="amount" value=""/><br>
-  <input type="submit" value="Invest Here !"/>
-</div></form>
-    
+    <div class="radio" align="center">
+    <input type="radio" name="radio" id ="radios1" value="ethical"><br><div class="card card-block" style="width: 18rem;">
+  <h3 class="card-title">Ethical Investement</h3>
+  <p class="card-text">Using one's ethical principles as the main filter !.</p><br><br><br>
+  <a href="#" class="btn btn-primary">Invest Here !</a>
+</div><br></div>
+    </div>
     <div class="col-md-2">
-    <form align="center"method="post" action="http://127.0.0.1:8000/stocks/growth">
-    {% csrf_token %}
-  <h3 class="card-title" align="center">Growth Investement</h3>
+    <div class="radio" align="center">
+    <input type="radio" name="radio" id ="radios2" value="growth"><br><div class="card card-block" style="width: 18rem;">
+  <h3 class="card-title">Growth Investement</h3>
   <p class="card-text">invest in companies that exhibit signs of above-average growth, even if the share price appears expensive !.</p>
-  
-  <input type="text" placeholder ="Investement Amount" name="amount"  class="form-control" width="400px" id="amount" value=""/><br>
-  <input type="submit" value="Invest Here !"/>
-</div></form>
-
-
+  <a href="#" class="btn btn-primary">Invest Here !</a>
+</div><br></div>
+    </div>
     <div class="col-md-2">
-   <form method="post" align="center" action="http://127.0.0.1:8000/stocks/indexInvesting">
-    {% csrf_token %}
-  <h3 class="card-title" align="center">Index Investement</h3>
+    <div class="radio" align="center">
+    <input type="radio" name="radio" id ="radios3" value="index"><br><div class="card card-block" style="width: 18rem;">
+  <h3 class="card-title">Index Investement</h3>
   <p class="card-text">it is impossible to "beat the market" once trading costs and taxes are taken into account !.</p><br>
-  <input type="text" placeholder ="Investement Amount" name="amount"  class="form-control" width="400px" id="amount" value=""/><br>
-  <input type="submit" value="Invest Here !"/>
-</div></form>
-
-
+  <a href="#" class="btn btn-primary">Invest Here !</a>
+</div><br></div>
+    </div>
     <div class="col-md-2">
-     <form method="post" align="center" action="http://127.0.0.1:8000/stocks/quality">
-    {% csrf_token %}
-  <h3 class="card-title" align="center">Quality Investement</h3>
+    <div class="radio" align="center">
+    <input type="radio" name="radio" id ="radios4" value="quality"><br><div class="card card-block" style="width: 18rem;">
+  <h3 class="card-title">Quality Investement</h3>
   <p class="card-text">Identify companies with outstanding quality characteristics..</p><br><br>
-  <input type="text" placeholder ="Investement Amount" name="amount"  class="form-control" width="400px" id="amount" value=""/><br>
-  <input type="submit" value="Invest Here !"/>
-</div></form>
-
-
+  <a href="#" class="btn btn-primary">Invest Here !</a>
+</div><br></div>
+    </div>
     <div class="col-md-2">
-    <form method="post" align="center" action="http://127.0.0.1:8000/stocks/value">
-    {% csrf_token %}
-  <h3 class="card-title" align="center">Value Investement</h3>
+    <div class="radio" align="center">
+    <input type="radio" name="radio" id ="radios5" value="value"><br><div class="card card-block" style="width: 18rem;">
+  <h3 class="card-title">Value Investement</h3>
   <p class="card-text">investment strategy where stocks are selected that trade for less than their intrinsic values !.</p><br>
-  <input type="text" placeholder ="Investement Amount" name="amount" class="form-control" width="400px" id="amount" value=""/><br>
-  <input type="submit" value="Invest Here !"/>
-</div></form>
-
-</div>
+  <a href="#" class="btn btn-primary">Invest Here !</a>
+</div><br></div>
+    </div>
     
+    </div></div>
+    <div class="row">
+    <div class="col-lg-4 col-lg-offset-4">
+        <div class="input-group">
+            <input type="text" placeholder ="Investement Amount" class="form-control" width="400px" id="amount" value=""/> 
+           
+            <span class="input-group-btn">
+                <input type="submit" class="btn btn-default" type="button" value="Go">
+            </span>
+
+        </div><!-- /input-group -->
+    </div><!-- /.col-lg-4 -->
+</div>
 <br><br>
 
 </form>
